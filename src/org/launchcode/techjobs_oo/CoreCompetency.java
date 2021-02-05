@@ -12,8 +12,15 @@ public class CoreCompetency {
         nextId++;
     }
 
-    public CoreCompetency(String value) {
-        this();
+    public int getId() {
+        return id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
         this.value = value;
     }
 
