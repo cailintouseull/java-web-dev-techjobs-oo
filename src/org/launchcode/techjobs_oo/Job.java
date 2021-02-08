@@ -31,6 +31,32 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    //#3 data not available?
+    @Override
+    public String toString(){
+        String jobString = "";
+        if (name.equals("")){
+            name = "Data not available";
+        }
+        if (employer.getValue().equals("")){
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("")){
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("")){
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("")){
+            coreCompetency.setValue("Data not available");
+        }
+        jobString = "\n" + "ID: " + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + "\n";
+
+        return jobString;
+    }
+
+    //use set or get value to change ; if employer getvalue = blank screen, then do employer.set value then say data not available
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 

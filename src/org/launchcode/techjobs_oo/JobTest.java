@@ -9,12 +9,15 @@ public class JobTest {
     Job jobObject;
     Job otherJobObject;
     Job jobInfo;
+    Job jobEmpty;
 
     @Before
     public void createJobObject(){
         jobObject = new Job();
         otherJobObject = new Job();
         jobInfo = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        jobEmpty = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+
     }
 
     @Test
@@ -35,6 +38,22 @@ public class JobTest {
     @Test
     public void testJobsForEquality(){
         assertFalse(jobObject.equals(otherJobObject));
+    }
+
+    @Test
+    public void testForBlankLine(){
+        assertTrue(jobInfo.toString().startsWith("\n"));
+        assertTrue(jobInfo.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testToStringMethod(){
+        assertEquals("\n" + "ID: " + "\nName: Product tester" + "\nEmployer: ACME" + "\nLocation: Desert" + "\nPosition Type: Quality control" + "\nCore Competency: Persistence" + "\n", jobInfo.toString());
+    }
+
+    @Test
+    public void testIfDataIsAvailable(){
+        assertEquals(jobEmpty.toString(), "\n" + "ID: " + "\nName: Data not available" + "\nEmployer: Data not available" + "\nLocation: Data not available" + "\nPosition Type: Data not available" + "\nCore Competency: Data not available" + "\n");
     }
 
 }
